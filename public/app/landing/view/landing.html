@@ -1,0 +1,50 @@
+<div ng-controller="landingController" ng-init="getMenuOrder();">
+	<img src="images/landingimage.png" alt="eat5" style ="max-width: 100%; max-height: 100%;" />
+	
+	<div class = "col-md-12">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div align="center" style="clear: both">
+				<b><h2 style="color:black; float: left;">choose your meal </h2> <h2 style="color:#7fc646;float: right">that melts in your mouth </b>
+	   		 </div>
+		</div>
+	    <div class="col-md-3"></div>
+	</div>
+	<div class="col-md-12">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<div align = "center">
+	    	<p>Today you are going to be a join interview.This is your dream job, which you have been
+				targeting for last few years.Business collaboration team work and aggrement flat icon set isolated 
+				vector illustartion. Available in high-resoultion and several sizes to fit the need	of your project. </p>
+				<hr style="color:#7fc646;width:200px;height:1px;">
+	    </div>
+	    </div>
+	   <div class="col-md-3"></div>
+	</div>
+	
+	
+	<div class="col-md-12">
+		<h1 ng-repeat="x in records">{{x}}</h1>
+		<div class="col-md-4" ng-repeat="menu in OrderMenuJSON" align="center">
+			<div style="display: block;padding: 10px;">
+				<img ng-src="{{menu.imageUrl}}" width="250" height="225"/>
+			</div>
+			<div style="display: block;padding: 10px;">
+				<button class="button" id="order"><i class="fa fa-shopping-cart"></i> &nbsp; ORDER</button>
+			</div>
+		</div>
+	</div> 
+	
+	
+	<img src="images/eat5Extra.png" alt="eat5" style ="max-width: 100%; max-height: 100%;" />
+	
+	<img src="images/testimonials.png" alt="eat5" style ="max-width: 100%; max-height: 100%;" />
+	
+	<img src="images/fromtheBlog.png" alt="eat5" style ="max-width: 100%; max-height: 100%;" />
+	
+	<img src="images/blogcontent.png" alt="eat5" style ="max-width: 100%; max-height: 100%;" />
+	
+	
+	
+</div>

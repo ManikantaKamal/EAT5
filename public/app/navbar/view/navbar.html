@@ -1,0 +1,124 @@
+<div ng-controller="navBarController" ng-init="LoadMenuJSON()">
+    <div id="nav">
+        <div class="navbar navbar-white navbar-static-top vm-navbarmargin" style="background-image:none;background-color:#7fc646;">
+            <div class="container">
+                <div class="navbar-header" id="navHeaderLogo" style="padding-right: 50px;padding-top:7px;">
+                    <a href="/landing" ng-click="setNavURL('/landing')">
+                       <img src="images/eat5-logo.png" alt="eat5" />
+                    </a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                        </span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse navbar-scroll" id="navbar-main">
+                    <!-- dropdown menu ends   -->
+                    <ul class="nav navbar-nav" ng-if="LoggedOnUserDetails !== undefined" style="position: absolute;">
+                        <li ng-click="setNavURL(navItem.Url)" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" ng-if="navItem.SubMenus.length == 0" ng-repeat="navItem in MenuJSON| filterMultiple:{PrivilegedRoleCodes : [LoggedOnUserRoleCode,null]} | orderBy: 'menuOrder' track by $index">
+                            <a href="{{navItem.Url}}"><i class="{{navItem.icon}}"></i>&nbsp;{{navItem.Title}}</a>
+                        </li>
+                        <li ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" ng-if="navItem.SubMenus.length > 0" ng-repeat="navItem in MenuJSON | filterMultiple:{PrivilegedRoleCodes : [LoggedOnUserRoleCode,null]} | orderBy: 'menuOrder' track by $index" class="dropdown dropdown-large">
+                            <a href="Javascript:void();" class="dropdown-toggle"
+                               data-toggle="dropdown"><i class="{{navItem.icon}}"></i>&nbsp;{{navItem.Title}}<b class="caret"></b></a>
+                            <ul class="dropdown-menu dropdown-menu-large">
+                                <li class="arrow-up arrow-margin"></li>
+                                <li class="arrow-col-margin">
+                                    <ul class="col-md-6 menu-items" ng-repeat="navSubItem in navItem.SubMenus | filterMultiple:{PrivilegedRoleCodes : [LoggedOnUserRoleCode,null]} track by $index">
+                                        <li ng-click="setNavURL(navSubItem.Url)">
+                                            <a href="{{navSubItem.Url}}">
+                                                <span class="{{navSubItem.class}}">
+                                                    <i class="{{navSubItem.icon}}">
+                                                    </i>
+                                                </span>
+                                                <pre>&nbsp;&nbsp;{{navSubItem.Title}}</pre>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- menu for landing page -->
+                    <ul class="nav navbar-nav" ng-if="LoggedOnUserDetails == undefined">
+                    	<li ng-click="setNavURL(navItem.Url)" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" >
+                            <a href="/landing" class="landingMenu">HOME</a>
+                        </li>
+                        <li ng-click="setNavURL(navItem.Url)" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" >
+                            <a href="/404" class="landingMenu">ABOUT</a>
+                        </li>
+                        <li ng-click="setNavURL(navItem.Url)" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" >
+                            <a href="/404" class="landingMenu">MENU</a>
+                        </li>
+                        <li ng-click="setNavURL(navItem.Url)" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" >
+                            <a href="/404" class="landingMenu">BLOG</a>
+                        </li>
+                        <li ng-click="setNavURL(navItem.Url)" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" >
+                            <a href="/404" class="landingMenu">CONTACT</a>
+                        </li>
+                        
+                        <li ng-click="setNavURL(navItem.Url)" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" >
+                            <a href="/404" class="landingMenu">
+                            <button class="button" id="landingMenu"><i class="fa fa-shopping-cart"></i> &nbsp; LOGIN</button></a>
+                        </li>
+                        
+                        <li ng-click="openRegister('lg')" ng-class="navItem.Url  == navbarurlfromWindow ?  class='active' : class=''" >
+                            <a href="" class="landingMenu">
+                            <button class="button" id="landingMenu"><i class="fa fa-shopping-cart"></i> &nbsp; REGISTER</button></a></a>
+                        </li>
+                    </ul>
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/login" ng-show="!visible">Login</a></li>
+                        <li class="dropdown dropdown-large">
+                            <a href="Javascript:void();" class="dropdown-toggle"
+                               data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;{{LoggedOnUserName}}<b class="caret"></b></a>
+                            <ul class="dropdown-menu dropdown-menu-large">
+                                <li class="arrow-up arrow-right"></li>
+                                <li class="col-md-6 arrow-col-margin">
+                                    <ul>
+                                        <li>
+                                            <a href="#{{mypath}}" ng-click="open('sm')">
+                                                <span class="icon-box bg-color-pink set-icon">
+                                                    <i class="fa fa-cog">
+                                                    </i>
+                                                </span>
+                                                <pre>  Change Password </pre>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-6 arrow-col-margin">
+                                    <ul>
+                                        <li>
+                                            <a href="" ng-click="Logout()">
+                                                <span class="icon-box bg-color-red set-icon">
+                                                    <i class="fa fa-unlock-alt">
+                                                    </i>
+                                                </span>
+                                                <pre>  Sign out </pre>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                    </ul> -->
+                </div>
+                
+                <script>
+                    jQuery(document).click(function () {
+                        $(".dropdown").show(
+                            function () {
+                                $('.dropdown-menu', this).fadeIn("fast");
+                            },
+                            function () {
+                                $('.dropdown-menu', this).fadeOut("fast");
+                            });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="userRegisterationPopUP.html">
+	<div ng-include="'app/common/popupView/userRegisteration.html'"></div>
+</script>

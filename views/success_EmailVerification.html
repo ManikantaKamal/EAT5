@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+     var doughnut = 0;
+     window.setInterval(
+     function () {
+	     if(doughnut !== 10){
+         doughnut = doughnut + 1;
+         document.getElementById("doughnuts").innerHTML = doughnut + " sec..";
+          }
+		  else{
+		   window.location.href = 'http://'+ window.location.host
+		  }
+     }, 1000);
+              </script>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" align="center" width="100%" border="0" style="border-spacing: 0;border-collapse: collapse;vertical-align: top">
+
+<h1 style="background-color:#63CB2C;color:white;font-family:'Courier New', Courier;"> &nbsp;&nbsp;eat 5</h1>
+
+<h2 align="center" style="font-family:'Courier New';padding:0%10%4%">
+<b> Thanks for verifying your email</b></br></br>
+</h2>
+
+<h3 align="center" style="font-family:'Courier New';padding:0%10%4%"><b>You will be automatically redirected to eat5 with in</b></h3>
+<h3 align="center" style="font-family:'Courier New';padding:0%10%4%"><b><div id="doughnuts"></div> </b></h3>
+
+<h5 style="background-color:#63CB2C;color:white;font-family:'Courier New', Courier;" align="center"> &nbsp;&nbsp;Copyright &copy; 2016.Eat5.</h5>
+</table>
+
+
+</body>
+</html>

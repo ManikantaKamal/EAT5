@@ -1,0 +1,22 @@
+<div ng-if="isMultiple != 'true'">
+    <ui-select class="btn-block vm-cursor-pointer vmdropdown" id="{{controlId}}" name="{{controlId}}" ng-required="{{requierdField}}" 
+               data-controlname="{{controlId}}" ngvalidate ng-disabled="isDisabled" ng-model="ngSelectModel" 
+        theme="select2" ng-change="onChangeEvent({{$select.selected}})">
+    <ui-select-match placeholder="{{placeHolder}}" allow-clear="true">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices ui-disable-choice="item.name=='{{disableChoice}}'" repeat="item.code as item in items | orderBy:'name' | filter: {name: $select.search} track by $index">
+    {{item.name}}
+    </ui-select-choices>
+</ui-select>
+</div>
+<div ng-if="isMultiple == 'true'">
+    <ui-select multiple ng-model="ngSelectModel" theme="select2" ui-select-required ng-disabled="isDisabled" style="width:100%"
+               class="btn-block vm-cursor-pointer vmdropdown" id="{{controlId}}" name="{{controlId}}" ng-required="{{requierdField}}"
+               data-controlname="{{controlId}}" ngvalidate ng-click="onChangeEvent(this)">
+        <ui-select-match placeholder="{{placeHolder}}">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="item.code as item in items | orderBy:'name' | filter: {name: $select.search}">
+            <div ng-bind-html="item.name | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+
+</div>
+

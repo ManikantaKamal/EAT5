@@ -1,0 +1,124 @@
+<div class="modal-header" id="div_documentUploadmodal">
+<div class="vm-text-center">
+         <div class="alerts" ng-show="noty.queue.length>0" >
+                <div class="col-md-12  alert alert-{{(m.type)||'info'}} alert-dismissable fade in pull-right" ng-repeat="m in noty.queue">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <div>{{m.body}}</div>
+                </div>
+            </div>
+      </div>
+    <button type="button" class="close" ng-click="cancel()">
+        &times;</button>
+    <h3 class="modal-title">Edit Family</h3>
+</div>
+<div >
+    <form name="FamilyEditForm" novalidate ngformvalidate>
+        <div class="modal-body">
+            <div class="row" >
+            <div class="col-md-4">
+                    <div class="form-group">
+                        <label>
+                            Name</label>
+                        <input type="text" class="form-control" id="txt_name" placeholder="Name" maxlength="45" ng-model="FamilyEditDetails.Name" ng-required="true"
+                        name="txtFamily_Name" data-controlname="Name" ngvalidate >
+                    </div>
+                </div>
+         <div class="col-md-4">
+         <div class="form-group">
+                        <label>
+                            Age</label>
+                        <input type="number" min="0" class="form-control" id="txt_age" placeholder="Age" maxlength="2"  ng-model="FamilyEditDetails.Age" ng-required="true" 
+                        name="txtFamily_Age" data-controlname="Age" ngvalidate>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+         <div class="form-group">
+                        <label>
+                            Gender</label>
+                        <input type="text" class="form-control" id="txt_gender" placeholder="Gender" maxlength="7"  ng-model="FamilyEditDetails.Gender" ng-required="true" 
+                        name="txtFamily_Gender" data-controlname="Gender" ngvalidate>
+                    </div>
+                    </div>
+                <!--<div class="col-md-12">
+                    <div class="form-group">
+                        <label>Document Type</label>
+                        <vm-ui-select2 name="DocumentType" control-id="cboDocumentType" place-holder="Select"
+                            ng-select-model="DocumentTypeDetails" items="Masters.Documents" data-controlname="Document Type"
+                            class="required drop-required" ngdropvalidate></vm-ui-select2>
+                    </div>
+                </div>-->
+            </div>
+            <div class="row"  >
+            <div class="col-md-4">
+                    <div class="form-group">
+                        <label>
+                            Relationship</label>
+                        <input type="text" class="form-control" id="txt_relationship" placeholder="Relationship" maxlength="12" ng-model="FamilyEditDetails.Relationship" ng-required="true" 
+                        name="txtFamily_Relationship" data-controlname="Relationship" ngvalidate>
+                    </div>
+                </div>
+         <div class="col-md-4">
+         <div class="form-group">
+                        <label>
+                            Marital Status</label>
+                        <input type="text" class="form-control" id="txt_maritalstatus" placeholder="Marital Status" maxlength="9" ng-model="FamilyEditDetails.MaritalStatus" ng-required="true" 
+                        name="txtFamily_MaritalStatus" data-controlname="Marital Status" ngvalidate>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+         <div class="form-group">
+                        <label>
+                            Education Qualification</label>
+                        <input type="text" class="form-control" id="txt_eduqual" placeholder="Education Qualification" maxlength="10" ng-model="FamilyEditDetails.EducationQualification" ng-required="true"
+                        name="txtFamily_EQ" data-controlname="Education Qualification" ngvalidate >
+                    </div>
+                    </div>
+                
+            </div>
+            <div class="row"  >
+            <div class="col-md-4">
+                    <div class="form-group">
+                        <label>
+                            Occupation</label>
+                        <input type="text" class="form-control" id="txt_occupation" placeholder="Occupation" maxlength="10" ng-model="FamilyEditDetails.Occupation" ng-required="true" 
+                         name="txtFamily_Occupation" data-controlname="Occupation" ngvalidate>
+                    </div>
+                </div>
+         <div class="col-md-4">
+         <div class="form-group">
+                        <label>
+                            Monthly Income</label>
+                        <input type="number" min="0" class="form-control" id="txt_monthlyincome" placeholder="Monthly Income"  ng-model="FamilyEditDetails.MonthlyIncome" ng-required="true"
+                         name="txtFamily_MonthlyIncome" data-controlname="Monthly Income" ngvalidate >
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+         <div class="form-group">
+                        <label>
+                           Contact No.</label>
+                        <input type="text" class="form-control" id="txt_contactno" placeholder="Contact No" ng-model="FamilyEditDetails.ContactNo" 
+                        data-ng-minlength="10"  maxlength="10" ng-pattern="/^[ 0-9()+-]*$/" ng-required="true"
+                        name="txtFamily_ContactNo" data-controlname="Contact No." ngvalidate >
+                    </div>
+                    </div>
+                
+            </div>
+           
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary"  ng-click="FamilyEdit(FamilyEditForm,FamilyEditForm);cancel(FamilyEditForm.$valid)">Save</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

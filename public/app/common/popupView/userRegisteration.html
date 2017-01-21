@@ -1,0 +1,91 @@
+<form name="UserRegistrationForm" ng-submit="registerUser()" ng-controller="userController" novalidate ngformvalidate>
+	<div class="modal-header" >
+		<button type="button" class="close" ng-click="cancel()">&times;</button>
+        <div class="modal-header">
+            <h3 class="modal-title">Register</h3>
+		</div>
+        <div class="modal-body">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>FirstName <font color=red>*</font></label>
+                        <input type="text" class="form-control btn-block" id="txtFirstName" placeholder="FirstName" data-controlname="FirstName"
+						maxlength="20" ng-model="User.FirstName" ng-required="true" ngvalidate>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>MiddleName</label>
+                        <input type="text" class="form-control btn-block" id="txtMiddleName" placeholder="MiddleName" 
+						maxlength="20" ng-model="User.MiddleName">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>LastName <font color=red>*</font> </label>
+                        <input type="text" class="form-control btn-block" id="txtLastName" placeholder="LastName" data-controlname="LastName"
+						maxlength="20" ng-model="User.LastName" ng-required="true" ngvalidate>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="form-group">
+						
+						<div class="form-group" ng-controller="usercontroller">
+                       <label>Date of Birth</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" id="txtDOB_user" placeholder="Date of Birth" datepicker-popup="{{format}}" 
+                    ng-model="User.DOB" is-open="opened" min-date="minDate" 
+                    max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+                    </div>
+                    
+						
+					</div>
+				</div>
+				
+				
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>EmailId <font color=red>*</font> </label>
+                        <input type="email" class="form-control btn-block" id="txtEmailId" placeholder="EmailId" data-controlname="EmailId"
+						maxlength="30" ng-model="User.EmailId" ng-required="true" ngvalidate>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>PhoneNumber <font color=red>*</font> </label>
+                        <input type="text" class="form-control btn-block" id="txtPhoneNumber" placeholder="PhoneNumber" data-controlname="Phone Number"
+						maxlength="10" ng-model="User.PhoneNumber" ng-required="true" ngvalidate>
+					</div>
+				</div>
+				
+				
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Password <font color=red>*</font> </label>
+                        <input type="password" class="form-control btn-block" id="txtpassword" placeholder="Password" data-controlname="Password"
+						maxlength="10" ng-model="User.Password" ng-required="true" ngvalidate>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Conform Password <font color=red>*</font> </label>
+                        <input type="password" class="form-control btn-block" id="txtEmailId" placeholder="Confirm Password" name = "ConfirmPassword" data-controlname="Confirm Password"
+						maxlength="10" ng-model="User.confirmPassword" ng-required="true" ngvalidate compare-to="User.Password">
+					</div>
+					<div ng-messages="UserRegistrationForm.ConfirmPassword.$error"> Password and confirm password should match</div>
+				</div>
+				
+			</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn btn-success"  type="submit" >Submit</button>
+		</div>
+	</div>
+</form>

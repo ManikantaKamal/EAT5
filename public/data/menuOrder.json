@@ -1,0 +1,35 @@
+{
+  "ViewModels": [
+{
+  "id":"001",
+  "code":"001",
+  "imageUrl":"images/1.png"
+	},
+	{
+  "id":"002",
+  "code":"002",
+  "imageUrl":"https://s-media-cache-ak0.pinimg.com/originals/f7/87/6d/f7876d159ba5eb59e5e5eee227d17e93.jpg"
+	},
+	{
+  "id":"003",
+  "code":"003",
+  "imageUrl":"images/2.png"
+	},
+	{
+  "id":"004",
+  "code":"004",
+  "imageUrl":"images/3.png"
+	},
+	{
+  "id":"005",
+  "code":"005",
+  "imageUrl":"images/1.png"
+	},
+	{
+  "id":"006",
+  "code":"006",
+  "imageUrl":"images/2.png"
+	}
+],
+"Success": true
+}

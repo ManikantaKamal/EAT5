@@ -1,0 +1,28 @@
+﻿<div class="row">
+<div class="col-md-4">
+
+<span ng-if="currentRecords < totalRecords">
+<span ng-if="currentPage!='1'">
+<div class="pull-left" ng-if="(currentRecords * currentPage)<= totalRecords">
+Showing {{(currentRecords * (currentPage-1))+1}} to {{(currentRecords * currentPage)}} of {{totalRecords}} records
+</div>
+<div class="pull-left" ng-if="(currentRecords * currentPage)> totalRecords">
+Showing {{(currentRecords * (currentPage-1))+1}} to {{totalRecords}} of {{totalRecords}} records
+</div>
+</span>
+<div class="pull-left" ng-if="currentPage=='1'">
+Showing 1 to {{(currentRecords * currentPage) }} of {{totalRecords}} records
+</div>
+</span>
+<div class="pull-left" ng-if="(currentRecords > totalRecords) && totalRecords!=0">
+Showing 1 to {{totalRecords}} of {{totalRecords}} records
+</div>
+</div>
+<div class="col-md-8 " style="margin-top: -20px;">
+<ul class="pagination pull-right"  ng-hide="hidePagination"> 
+    <li><a href="" ng-click="gotoPreviousPage(1)">&laquo;</a></li> 
+    <li ng-repeat="p in pages" ng-class="{active: p === currentPage}"><a href="" ng-click="gotoPage(p)">{{p}}</a></li> 
+    <li><a href="" ng-click="gotoNextPage(totalPages)">&raquo;</a></li> 
+</ul> 
+</div>﻿
+</div>

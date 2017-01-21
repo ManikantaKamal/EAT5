@@ -1,0 +1,49 @@
+.footerStyle{
+	background-color: #7fc646;
+	color:white !important;
+}
+.newsLetter{
+	padding-top: 20px;
+    padding-bottom: 20px;
+}
+.newsletterbody{
+	background-color: #585858;
+	color:white !important;
+}
+.footerbodyContent{
+	padding-left: 120px;
+	display:table;
+}
+.newsLetterSubmitbutton {
+    background-color: black;
+    height:37px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+.newsLetterinput {
+	width:250px;
+	display: inline;
+	border-radius: 0px;
+}
+button#order {
+   /*  -moz-border-radius: 4px;
+    -webkit-border-radius: 4px; */
+    border-radius: 16px;
+    color:#ffffff;
+    background-color:#808080;
+}
+.landingMenu{
+	color:#ffffff !important;
+	font-size:100% !important;
+	font-weight: bold !important;
+}
+button#landingMenu {
+    border-radius: 16px;
+    color:#7fc646;
+    background-color:#ffffff;
+}

@@ -1,0 +1,115 @@
+﻿'use strict';
+reachApp.controller('navBarController', function ($rootScope, $scope, $location, $modal, $log, $window, store,noty,$timeout,NavbarService,$filter) {
+    $scope.LoggedOnUserName = "";
+    $scope.LoggedOnUserFullName = "";
+
+    var loggedonuserinfo = store.get('loggedonuser');
+    if (null != loggedonuserinfo) {
+        $scope.LoggedOnUserFullName = loggedonuserinfo.name;
+        $scope.LoggedOnUserRoleCode = loggedonuserinfo.roleCode;
+    }
+
+    var LoadMenuJSON = function(){
+        NavbarService.MenuJson().then(function (res) {
+            $scope.MenuJSON = res.ViewModels;
+        });
+    }
+    
+    $timeout(function () { LoadMenuJSON(); }, 0);
+
+    $('#nav').affix({
+        offset: {
+            top: $('header').height()
+        }
+    });
+
+    $scope.navLogoVisibility = "ng-hide";
+    angular.element($window).bind("scroll", function (e) {
+        if (angular.element("#nav").offset().top > $('header').height()) {
+            $scope.$apply(function () {
+                $scope.navLogoVisibility = "ng-show";
+            });
+        }
+        else {
+            $scope.$apply(function () {
+                $scope.navLogoVisibility = "ng-hide";
+            });
+        }
+    });
+
+    $scope.Logout = function () {
+    	store.remove('authToken');
+        store.remove('loggedonuser');
+        $window.location.href = '/';
+    
+    };
+    
+    
+    $scope.noty = noty; // notify service 
+
+    $scope.noop = function () {
+        console.log("noop")
+        angular.noop();
+    };
+
+    $scope.isActive = function (menu) {
+        return menu == $location.path();
+    };
+    
+    $rootScope.$on('view-changed', function (event, args) {
+        $scope.visible = ($location.path() == '/login') ? false : true;
+        $scope.active = "";
+        var loggedonuserinfo = store.get('loggedonuser');
+        try{
+        if (null != loggedonuserinfo&&loggedonuserinfo!=undefined) {
+            //$scope.$apply(function () {
+            $scope.LoggedOnUserName = loggedonuserinfo.firstName;
+            $scope.LoggedOnUserFullName = loggedonuserinfo.firstName;
+            $scope.LoggedOnUserRole = loggedonuserinfo.role;
+            $scope.LoggedOnUserRoleCode = loggedonuserinfo.roleCode;
+            $scope.LoggedResetPassword=loggedonuserinfo.resetPassword;
+            $scope.visibleChgPwd = ($location.path() == '/login')  || ($location.path() == '/ChangePassword')? false : true;
+            if($scope.visibleChgPwd && loggedonuserinfo.resetPassword!=null&&loggedonuserinfo.resetPassword=='0')
+            {
+            	/*$.visibleChgPwd
+            	$scope.changepasswordpage="true";
+            	  $window.location.href = '#/ChangePassword';
+            	  alert($scope.changepasswordpage);
+            	*/
+            	
+            	$scope.Logout();
+            }
+            //});
+            }
+            $timeout(function () { LoadMenuJSON(); }, 0);
+        }
+        
+        catch(e)
+        {
+        	$scope.Logout();
+        }
+    });
+
+    $scope.items = ['item1', 'item2', 'item3'];
+
+    $scope.open = function (size) {
+        $scope.mypath = $location.$$path; //get the path of the current user location
+        var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+    
+});
